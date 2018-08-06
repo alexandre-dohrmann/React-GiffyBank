@@ -136,7 +136,7 @@ class GifsContainer extends Component {
         console.log(this.state)
         return (
             <div>
-                <Gifs gifs={this.state.gifs} deleteMovie={this.deleteGif} showModal={this.showModal} />
+                <Gifs gifs={this.state.gifs} deleteGif={this.deleteGif} showModal={this.showModal} />
                 <CreateGif addGif={this.addGif} />
                 {this.state.showEdit ? <EditGif closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} gifToEdit={this.state.gifToEdit} /> : null}
 

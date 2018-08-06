@@ -36,18 +36,17 @@ class Login extends Component {
     }
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Username:
-        <input type="text" name="username" onChange={this.handleChange} />
-                </label>
-                <label>
-                    Password:
-        <input type="password" name="password" onChange={this.handleChange} />
-                </label>
-                <input type='Submit' />
+            <form className="login-input" onSubmit={this.handleSubmit}>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Username: </label>
+                    <input className="form-control" type="text" name="username" id="formGroupExampleInput" placeholder="username" onChange={this.handleChange} />
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Password: </label>
+                    <input className="form-control" type="password" name="password" id="formGroupExampleInput2" placeholder="password" onChange={this.handleChange} />
+                </div>
+                <button className="btn btn-info log m-2">Login</button>
             </form>
-
         )
     }
 }

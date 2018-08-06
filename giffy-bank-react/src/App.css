@@ -5,6 +5,7 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
+  display: inline-block;
 }
 
 .App-header {
@@ -26,3 +27,9 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.login-input {
+  max-width: 300px;
+  margin: 2px;
+  display: inline-block;
+}
+
