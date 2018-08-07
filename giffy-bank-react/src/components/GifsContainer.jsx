@@ -143,7 +143,7 @@ class GifsContainer extends Component {
             }
         })
         const term = e.target.value
-        const url = `http://api.giphy.com/v1/gifs/search?q=${term.replace(/\s/g, '+')}&api_key=dc6zaTOxFJmzC`;
+        const url = `http://api.giphy.com/v1/gifs/search?q=${term.replace(/\s/g, '+')}&api_key=dc6zaTOxFJmzC&limit=10`;
         request.get(url, (err, res) => {
             this.setState({ gifs: res.body.data })
         });
