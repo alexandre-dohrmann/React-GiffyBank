@@ -9,16 +9,20 @@ class Nav extends Component {
         return (
             <div>
                 <div className="home-header-div">
-                    <img src={"/images/giffy-logo.png"} className="App-logo" alt="logo" />
-                    <h1 className="home-header">Giffy Bank</h1><br />
+                    <div className="h1-div">
+                        <img src={"/images/giffy-logo.png"} className="App-logo" alt="logo" />
+                    </div>
+                    <div className="h1-div">
+                        <h1 className="home-header">Giffy Bank</h1><br />
+                    </div>
                 </div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <ul className="nav navbar-nav">
                         <li>
-                            <Link className="nav-links m-3" to="/">Gifs Home</Link>
+                            <Link className="nav-links m-4" to="/">Gifs Home</Link>
                         </li>
                         <li>
-                            <Link className="nav-links m-3" to="/gifs">My Gifs</Link>
+                            <Link className="nav-links m-4" to="/gifs">My Gifs</Link>
                         </li>
                     </ul>
                 </nav>

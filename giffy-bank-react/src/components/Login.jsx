@@ -30,23 +30,27 @@ class Login extends Component {
         if (parsedResponse.data === 'login successful') {
             // switch our route.
             // Programmatically switching to a new route.
-            this.props.history.push('Gifs.jsx');
+            this.props.history.push('/gifs');
         }
 
     }
     render() {
         return (
-            <form className="login-input" onSubmit={this.handleSubmit}>
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Username: </label>
-                    <input className="form-control" type="text" name="username" id="formGroupExampleInput" placeholder="username" onChange={this.handleChange} />
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Password: </label>
-                    <input className="form-control" type="password" name="password" id="formGroupExampleInput2" placeholder="password" onChange={this.handleChange} />
-                </div>
-                <button className="btn btn-info log m-2">Login</button>
-            </form>
+            <div className="log-in-box"><br />
+                <form className="login-input" onSubmit={this.handleSubmit}>
+                    <div className="form-group">
+                        <label form="formGroupExampleInput">Username: </label>
+                        <input className="form-control" type="text" name="username" id="formGroupExampleInput" placeholder="username" onChange={this.handleChange} />
+                    </div>
+                    <div className="form-group">
+                        <label form="formGroupExampleInput2">Password: </label>
+                        <input className="form-control" type="password" name="password" id="formGroupExampleInput2" placeholder="password" onChange={this.handleChange} />
+                    </div>
+                    <div className="button-log">
+                        <button className="btn btn-info log">Login</button>
+                    </div>
+                </form>
+            </div>
         )
     }
 }
