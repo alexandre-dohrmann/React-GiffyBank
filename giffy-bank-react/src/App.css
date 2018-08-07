@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  animation: animation 1500ms 4 linear both;
+  animation: animation 800ms 4 linear both;
   height: 70px;
   display: inline-block;
   margin-top: -45px;
@@ -25,10 +25,6 @@
   font-size: large;
 }
 
-.animation-target {
-  -webkit-animation: animation 1500ms linear infinite both;
-  animation: animation 1500ms linear infinite both;
-}
 
 @keyframes animation { 
   0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -50, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -50, 0, 0, 1); }

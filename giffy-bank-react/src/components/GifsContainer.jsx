@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Gifs from './Gifs';
+import GifList from './GifList';
 import CreateGif from './CreateGif';
 import EditGif from './EditGif';
-import SearchBar from './SearchBar';
+import request from 'superagent';
 
 
 class GifsContainer extends Component {
@@ -128,26 +128,34 @@ class GifsContainer extends Component {
 
     }
     handleFormChange = (e) => {
-
         this.setState({
             gifToEdit: {
                 ...this.state.gifToEdit,
                 [e.target.name]: e.target.value
             },
+        })
+    }
+    handleTermChange = (e) => {
+        this.setState({
             gifSearch: {
                 ...this.state.gifSearch,
                 [e.target.name]: e.target.value
             }
         })
+        const term = e.target.value
+        const url = `http://api.giphy.com/v1/gifs/search?q=${term.replace(/\s/g, '+')}&api_key=dc6zaTOxFJmzC&limit=10`;
+        request.get(url, (err, res) => {
+            this.setState({ gifs: res.body.data })
+        });
     }
+
     render() {
         console.log(this.state)
         return (
             <div>
-                <Gifs gifs={this.state.gifs} deleteGif={this.deleteGif} showModal={this.showModal} />
-                <CreateGif addGif={this.addGif} gifSearch={this.state.gifSearch} handleFormChange={this.handleFormChange} />
+                <CreateGif addGif={this.addGif} gifSearch={this.state.gifSearch} handleTermChange={this.handleTermChange} />
+                <GifList gifs={this.state.gifs} deleteGif={this.deleteGif} showModal={this.showModal} />
                 {this.state.showEdit ? <EditGif closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} gifToEdit={this.state.gifToEdit} /> : null}
-
             </div>
         )
     }

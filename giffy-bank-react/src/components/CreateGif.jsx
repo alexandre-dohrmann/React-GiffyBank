@@ -7,8 +7,8 @@ class CreateGif extends Component {
     render() {
         return (
             <div>
-                <SearchBar handleFormChange={this.props.handleFormChange} gifSearch={this.props.gifSearch} />
-                <h4>This is Create A Gif Page</h4>
+                <h4>Search for a gif!</h4>
+                <SearchBar handleTermChange={this.props.handleTermChange} />
             </div>
         );
     }

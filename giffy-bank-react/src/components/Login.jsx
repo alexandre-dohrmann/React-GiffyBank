@@ -18,6 +18,7 @@ class Login extends Component {
         e.preventDefault();
 
         const loginResponse = await fetch('http://localhost:9000/auth/login', {
+            credentials: 'include',
             method: 'POST',
             body: JSON.stringify(this.state),
             headers: {
