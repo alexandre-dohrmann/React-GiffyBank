@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Gifs from './Gifs';
 import CreateGif from './CreateGif';
 import EditGif from './EditGif';
+import SearchBar from './SearchBar';
 
 
 class GifsContainer extends Component {
@@ -15,6 +16,9 @@ class GifsContainer extends Component {
             gifToEdit: {
                 url: '',
                 description: ''
+            },
+            gifSearch: {
+                search: ''
             }
         }
     }
@@ -129,6 +133,10 @@ class GifsContainer extends Component {
             gifToEdit: {
                 ...this.state.gifToEdit,
                 [e.target.name]: e.target.value
+            },
+            gifSearch: {
+                ...this.state.gifSearch,
+                [e.target.name]: e.target.value
             }
         })
     }
@@ -137,7 +145,7 @@ class GifsContainer extends Component {
         return (
             <div>
                 <Gifs gifs={this.state.gifs} deleteGif={this.deleteGif} showModal={this.showModal} />
-                <CreateGif addGif={this.addGif} />
+                <CreateGif addGif={this.addGif} gifSearch={this.state.gifSearch} handleFormChange={this.handleFormChange} />
                 {this.state.showEdit ? <EditGif closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} gifToEdit={this.state.gifToEdit} /> : null}
 
             </div>
