@@ -16,7 +16,7 @@ body {
 .home-header:after {
 	content: "Giffy Bank";
   position: relative; left: 10px; top: 5px;
-  margin-left: -446px;
+  margin-left: -455px;
   color: rgba(255, 0, 43, 0.767); 
 
 }
@@ -32,7 +32,6 @@ body {
   text-align: center;
   background-image: url("/images/masthead.png");
   background-repeat: no-repeat;
-  background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   padding-top: 20px;
@@ -41,5 +40,5 @@ body {
 }
 
 .h1-div {
-  display: inline-block;
+  display: inline-flex;
 }
