@@ -19,7 +19,9 @@ class GifsContainer extends Component {
             },
             gifSearch: {
                 search: ''
-            }
+            },
+            selectedGif: null,
+            modalIsOpen: false
         }
     }
     componentDidMount() {
@@ -135,6 +137,19 @@ class GifsContainer extends Component {
             },
         })
     }
+    openModal(gif) {
+        this.setState({
+            modalIsOpen: true,
+            selectedGif: gif
+        });
+    }
+
+    closeModal() {
+        this.setState({
+            modalIsOpen: false,
+            selectedGif: null
+        });
+    }
     handleTermChange = (e) => {
         this.setState({
             gifSearch: {
@@ -143,7 +158,7 @@ class GifsContainer extends Component {
             }
         })
         const term = e.target.value
-        const url = `http://api.giphy.com/v1/gifs/search?q=${term.replace(/\s/g, '+')}&api_key=dc6zaTOxFJmzC&limit=10`;
+        const url = `http://api.giphy.com/v1/gifs/search?q=${term.replace(/\s/g, '+')}&api_key=dc6zaTOxFJmzC&limit=15`;
         request.get(url, (err, res) => {
             this.setState({ gifs: res.body.data })
         });
@@ -153,8 +168,16 @@ class GifsContainer extends Component {
         console.log(this.state)
         return (
             <div>
-                <CreateGif addGif={this.addGif} gifSearch={this.state.gifSearch} handleTermChange={this.handleTermChange} />
-                <GifList gifs={this.state.gifs} deleteGif={this.deleteGif} showModal={this.showModal} />
+                <CreateGif addGif={this.addGif}
+                    gifSearch={this.state.gifSearch}
+                    handleTermChange={this.handleTermChange}
+                    modalIsOpen={this.state.modalIsOpen}
+                    selectedGif={this.state.selectedGif}
+                    onRequestClose={() => this.closeModal()} />
+                <GifList gifs={this.state.gifs}
+                    deleteGif={this.deleteGif}
+                    showModal={this.showModal}
+                    onGifSelect={selectedGif => this.openModal(selectedGif)} />
                 {this.state.showEdit ? <EditGif closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} gifToEdit={this.state.gifToEdit} /> : null}
             </div>
         )
