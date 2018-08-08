@@ -22,8 +22,7 @@ const App = () => {
       <Nav />
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route exact path="/gifs" component={GifsContainer} />
-        <Route exact path="/my-gifs" component={MyGifs} />
+        <Route path="/gifs" component={GifsContainer} />
         <Route component={My404} />
       </Switch>
     </main>

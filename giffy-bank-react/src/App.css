@@ -114,7 +114,7 @@ label {
 .log2 {
   background-color: rgba(255, 0, 43, 0.767); 
   font-family: 'Squada One', cursive;
-  font-size: 25px;
+  font-size: 20px;
   margin-bottom: 20px;
 }
 
@@ -161,6 +161,8 @@ label {
   transform: translateX(-50%) translateY(-50%);
   font-family: 'Saira Extra Condensed', sans-serif;
   font-size: 25px;
+  max-height: 556px;
+  display: flex;
 }
 
 strong {
@@ -169,6 +171,9 @@ strong {
   font-size: 25px;
   text-transform: none;
 }
+a {
+  max-width: 300px;
+}
 
 p {
   text-transform: capitalize;
@@ -176,8 +181,17 @@ p {
 
 .gif-modal-img {
   max-height: 300px;
+  display: block;
+  margin: auto;
 }
-
+.img-div {
+  display: inline-flex;
+  margin: 15px;
+}
+.img-div2 {
+  display: inline-block;
+  margin: 15px;
+}
 input {
     display: block;
     font-size: 22px;

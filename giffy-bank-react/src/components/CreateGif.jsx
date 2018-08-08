@@ -10,7 +10,9 @@ class CreateGif extends Component {
         return (
             <div className="results">
                 <SearchBar handleTermChange={this.props.handleTermChange} />
-                <GifModal modalIsOpen={this.props.modalIsOpen}
+                <GifModal
+                    addGif={this.props.addGif}
+                    modalIsOpen={this.props.modalIsOpen}
                     selectedGif={this.props.selectedGif}
                     onRequestClose={this.props.onRequestClose}
                 />

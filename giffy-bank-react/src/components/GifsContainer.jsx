@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import GifList from './GifList';
 import CreateGif from './CreateGif';
 import EditGif from './EditGif';
+import MyGifs from './MyGifs';
+import { Route } from 'react-router-dom';
 import request from 'superagent';
+
 
 
 class GifsContainer extends Component {
@@ -10,6 +13,7 @@ class GifsContainer extends Component {
         super();
 
         this.state = {
+            myGifs: [],
             gifs: [],
             showEdit: false,
             editGifId: null,
@@ -26,7 +30,9 @@ class GifsContainer extends Component {
     }
     componentDidMount() {
         this.getGifs().then((gifs) => {
-            this.setState({ gifs: gifs.data })
+            this.setState({
+                myGifs: gifs.data
+            })
         }).catch((err) => {
             console.log(err);
         })
@@ -43,19 +49,26 @@ class GifsContainer extends Component {
     }
     addGif = async (gif, e) => {
         e.preventDefault();
+        console.log("ADDING A GIF");
+        console.log(gif);
+        const gifToCreate = {
+            "url": gif.images.downsized.url,
+            "description": gif.title
+        }
+        console.log(gifToCreate);
         try {
             const createdGif = await fetch('http://localhost:9000/api/v1/gifs', {
                 credentials: 'include',
                 method: 'POST',
-                body: JSON.stringify(gif),
+                body: JSON.stringify(gifToCreate),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
 
             const createdGifJson = await createdGif.json();
-            this.setState({ gifs: [...this.state.gifs, createdGifJson.data] });
-
+            this.setState({ myGifs: [...this.state.myGifs, createdGifJson.data] });
+            this.props.history.push('/gifs/my-gifs');
         } catch (err) {
             console.log(err)
         } console.log('credentials');
@@ -168,17 +181,27 @@ class GifsContainer extends Component {
         console.log(this.state)
         return (
             <div>
-                <CreateGif addGif={this.addGif}
-                    gifSearch={this.state.gifSearch}
-                    handleTermChange={this.handleTermChange}
-                    modalIsOpen={this.state.modalIsOpen}
-                    selectedGif={this.state.selectedGif}
-                    onRequestClose={this.closeModal} />
-                <GifList gifs={this.state.gifs}
-                    deleteGif={this.deleteGif}
-                    showModal={this.showModal}
-                    onGifSelect={selectedGif => this.openModal(selectedGif)} />
-                {this.state.showEdit ? <EditGif closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} gifToEdit={this.state.gifToEdit} /> : null}
+                <Route exact path="/gifs/my-gifs"
+                    render={(props) => { return <MyGifs {...props} gifs={this.state.myGifs} /> }} />
+                <Route exact path="/gifs"
+                    render={(props) => {
+                        return (
+                            <div>
+                                <CreateGif addGif={this.addGif}
+                                    gifSearch={this.state.gifSearch}
+                                    handleTermChange={this.handleTermChange}
+                                    modalIsOpen={this.state.modalIsOpen}
+                                    selectedGif={this.state.selectedGif}
+                                    onRequestClose={this.closeModal} />
+                                <GifList gifs={this.state.gifs}
+                                    deleteGif={this.deleteGif}
+                                    showModal={this.showModal}
+                                    onGifSelect={selectedGif => this.openModal(selectedGif)} />
+                                {this.state.showEdit ? <EditGif closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} gifToEdit={this.state.gifToEdit} /> : null}
+                            </div>
+                        )
+                    }}
+                />
             </div>
         )
     }
