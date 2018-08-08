@@ -80,7 +80,8 @@
   margin: 2px;
   display: inline-block;
   text-align: left;
-  font-family: 'Squada One', cursive;
+  font-family: 'Saira Extra Condensed', sans-serif;
+  font-size: 20px;
 }
 
 label {
@@ -91,7 +92,15 @@ label {
 }
 .log-in-box {
   text-align: center;
-  font-family: 'Squada One', cursive;
+  font-family: 'Saira Extra Condensed', sans-serif;
+  margin-top: 20px;
+  text-transform: uppercase; 
+}
+.log-in {
+  font-family: 'Saira Extra Condensed', sans-serif;
+  text-transform: uppercase; 
+  font-size: 20px;
+  text-align: left;
 }
 
 .button-log {
@@ -101,6 +110,12 @@ label {
 .log {
   background-color: rgb(30, 40, 49); 
   font-family: 'Squada One', cursive;
+}
+.log2 {
+  background-color: rgba(255, 0, 43, 0.767); 
+  font-family: 'Squada One', cursive;
+  font-size: 25px;
+  margin-bottom: 20px;
 }
 
 .nav-links {
@@ -128,23 +143,40 @@ label {
     list-style: none;
 }
 
-.search-page-header {
-  font-family: 'Squada One', cursive;
-  font-size: 25px;
-  color: rgba(255, 0, 43, 0.767); 
-  text-align: center;
-  padding-top: 10px;
-
-}
-
 .search-input {
   max-width: 600px;
-  margin: 2px;
+  margin-top: 20px;
   text-align: center;
   display: inline-block;
-  font-family: 'Squada One', cursive;
+  font-family: 'Saira Extra Condensed', sans-serif;
+  font-size: 20px;
+  text-transform: uppercase; 
 }
 
+.gif-modal {
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-family: 'Saira Extra Condensed', sans-serif;
+  font-size: 25px;
+}
+
+strong {
+  font-family: 'Squada One', cursive;
+  color: rgba(255, 0, 43, 0.767); 
+  font-size: 25px;
+  text-transform: none;
+}
+
+p {
+  text-transform: capitalize;
+}
+
+.gif-modal-img {
+  max-height: 300px;
+}
 
 input {
     display: block;

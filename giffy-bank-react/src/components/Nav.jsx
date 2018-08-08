@@ -19,10 +19,13 @@ class Nav extends Component {
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <ul className="nav navbar-nav">
                         <li>
-                            <Link className="nav-links m-4" to="/">Gifs Home</Link>
+                            <Link className="nav-links m-4" to="/gifs">Gifs Home</Link>
                         </li>
                         <li>
-                            <Link className="nav-links m-4" to="/gifs">My Gifs</Link>
+                            <Link className="nav-links m-4" to="/my-gifs">My Gifs</Link>
+                        </li>
+                        <li>
+                            <Link className="nav-links m-4" to="/">Logout</Link>
                         </li>
                     </ul>
                 </nav>

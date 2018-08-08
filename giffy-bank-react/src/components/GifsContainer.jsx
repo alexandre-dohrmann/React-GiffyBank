@@ -137,14 +137,14 @@ class GifsContainer extends Component {
             },
         })
     }
-    openModal(gif) {
+    openModal = (gif) => {
         this.setState({
             modalIsOpen: true,
             selectedGif: gif
         });
     }
 
-    closeModal() {
+    closeModal = () => {
         this.setState({
             modalIsOpen: false,
             selectedGif: null
@@ -158,7 +158,7 @@ class GifsContainer extends Component {
             }
         })
         const term = e.target.value
-        const url = `http://api.giphy.com/v1/gifs/search?q=${term.replace(/\s/g, '+')}&api_key=dc6zaTOxFJmzC&limit=15`;
+        const url = `http://api.giphy.com/v1/gifs/search?q=${term.replace(/\s/g, '+')}&api_key=dc6zaTOxFJmzC&limit=50`;
         request.get(url, (err, res) => {
             this.setState({ gifs: res.body.data })
         });
@@ -173,7 +173,7 @@ class GifsContainer extends Component {
                     handleTermChange={this.handleTermChange}
                     modalIsOpen={this.state.modalIsOpen}
                     selectedGif={this.state.selectedGif}
-                    onRequestClose={() => this.closeModal()} />
+                    onRequestClose={this.closeModal} />
                 <GifList gifs={this.state.gifs}
                     deleteGif={this.deleteGif}
                     showModal={this.showModal}
