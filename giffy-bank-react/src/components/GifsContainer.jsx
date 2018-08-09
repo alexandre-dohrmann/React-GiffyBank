@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import GifList from './GifList';
 import CreateGif from './CreateGif';
-import EditGif from './EditGif';
 import MyGifs from './MyGifs';
+
 import { Route } from 'react-router-dom';
 import request from 'superagent';
 
@@ -18,7 +18,6 @@ class GifsContainer extends Component {
             showEdit: false,
             editGifId: null,
             gifToEdit: {
-                url: '',
                 description: ''
             },
             gifSearch: {
@@ -83,9 +82,9 @@ class GifsContainer extends Component {
                 credentials: 'include',
                 method: 'DELETE'
             });
-            console.log('inside try')
+            console.log('INSIDE TRY TO DELETE ROUTE')
             const deleteGifJson = await deleteGif.json();
-            this.setState({ gifs: this.state.gifs.filter((gif, i) => gif._id !== id) });
+            this.setState({ myGifs: this.state.myGifs.filter((gif, i) => gif._id !== id) });
 
         } catch (err) {
             console.log(err, ' error')
@@ -93,63 +92,37 @@ class GifsContainer extends Component {
 
 
     }
-    showModal = (id, e) => {
-        // i comes before e, when called with bind
-        const gifToEdit = this.state.gifs.find((gif) => gif._id === id)
-        console.log(gifToEdit, ' gifToEdit')
-        this.setState({
-            credentials: 'include',
-            showEdit: true,
-            editGifId: id,
-            gifToEdit: gifToEdit
-        });
-    }
-    closeAndEdit = async (e) => {
-        e.preventDefault();
 
+    editGif = async (gifToUpdate, e) => {
+        e.preventDefault();
         try {
-            const editResponse = await fetch('http://localhost:9000/api/v1/gifs/' + this.state.editGifId, {
+            const editResponse = await fetch('http://localhost:9000/api/v1/gifs/' + gifToUpdate._id, {
                 credentials: 'include',
                 method: 'PUT',
-                body: JSON.stringify(this.state.gifToEdit),
+                body: JSON.stringify(gifToUpdate),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
-
             const editResponseJson = await editResponse.json();
-
-            const editedGifArray = this.state.gifs.map((gif) => {
-
-                if (gif._id === this.state.editGifId) {
-
+            console.log(editResponseJson)
+            const editedGifArray = this.state.myGifs.map((gif) => {
+                if (gif._id === gifToUpdate._id) {
                     gif.url = editResponseJson.data.url;
                     gif.description = editResponseJson.data.description;
                 }
-
                 return gif
             });
-
+            console.log(editedGifArray)
             this.setState({
-                gif: editedGifArray,
+                myGifs: editedGifArray,
                 showEdit: false
             });
-
-
-
         } catch (err) {
             console.log(err);
         }
+    }
 
-    }
-    handleFormChange = (e) => {
-        this.setState({
-            gifToEdit: {
-                ...this.state.gifToEdit,
-                [e.target.name]: e.target.value
-            },
-        })
-    }
     openModal = (gif) => {
         this.setState({
             modalIsOpen: true,
@@ -182,7 +155,17 @@ class GifsContainer extends Component {
         return (
             <div>
                 <Route exact path="/gifs/my-gifs"
-                    render={(props) => { return <MyGifs {...props} gifs={this.state.myGifs} /> }} />
+                    render={(props) => {
+                        return (
+                            <div>
+                                <MyGifs {...props} gifs={this.state.myGifs}
+                                    deleteGif={this.deleteGif}
+                                    showModal={this.showModal}
+                                    editGif={this.editGif} />
+                            </div>
+                        )
+                    }}
+                />
                 <Route exact path="/gifs"
                     render={(props) => {
                         return (
@@ -194,10 +177,7 @@ class GifsContainer extends Component {
                                     selectedGif={this.state.selectedGif}
                                     onRequestClose={this.closeModal} />
                                 <GifList gifs={this.state.gifs}
-                                    deleteGif={this.deleteGif}
-                                    showModal={this.showModal}
                                     onGifSelect={selectedGif => this.openModal(selectedGif)} />
-                                {this.state.showEdit ? <EditGif closeAndEdit={this.closeAndEdit} handleFormChange={this.handleFormChange} gifToEdit={this.state.gifToEdit} /> : null}
                             </div>
                         )
                     }}

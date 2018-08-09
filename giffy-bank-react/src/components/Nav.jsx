@@ -22,7 +22,7 @@ class Nav extends Component {
                             <Link className="nav-links m-4" to="/gifs">Gifs Home</Link>
                         </li>
                         <li>
-                            <Link className="nav-links m-4" to="/my-gifs">My Gifs</Link>
+                            <Link className="nav-links m-4" to="/gifs/my-gifs">My Gifs</Link>
                         </li>
                         <li>
                             <Link className="nav-links m-4" to="/">Logout</Link>
