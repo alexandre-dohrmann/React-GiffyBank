@@ -66,7 +66,14 @@ class GifsContainer extends Component {
             });
 
             const createdGifJson = await createdGif.json();
-            this.setState({ myGifs: [...this.state.myGifs, createdGifJson.data] });
+            this.setState({
+                myGifs: [...this.state.myGifs, createdGifJson.data],
+                gifSearch: {
+                    search: ''
+                },
+                modalIsOpen: false,
+                gifs: []
+            });
             this.props.history.push('/gifs/my-gifs');
         } catch (err) {
             console.log(err)

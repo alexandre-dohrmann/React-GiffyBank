@@ -133,11 +133,18 @@ label {
   font-family: 'Squada One', cursive;
   display: inline-block;
 }
+
 .log2 {
   background-color: rgba(255, 0, 43, 0.767); 
   font-family: 'Squada One', cursive;
   font-size: 20px;
   margin-bottom: 20px;
+}
+
+.log3 {
+  background-color: rgba(255, 0, 43, 0.767); 
+  font-family: 'Squada One', cursive;
+  display: inline-block;
 }
 
 .nav-links {
@@ -219,11 +226,11 @@ p {
   text-transform: capitalize;
   font-family: 'Saira Extra Condensed', sans-serif;
   color: rgba(255, 0, 43, 0.767); 
-  font-size: 14px;
+  font-size: 18px;
 }
 .my-gifs {
-  font-family: 'Saira Extra Condensed', sans-serif;
-  color: rgba(255, 0, 43, 0.767); 
+  font-family: 'Kirang Haerang', cursive;
+  color: black; 
   font-size: 30px;
   text-align: center;
   font-weight: 800;

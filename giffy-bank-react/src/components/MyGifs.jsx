@@ -8,10 +8,10 @@ const MyGifs = (props) => {
             <div className="gif-item small">
                 <img src={gif.url} /><br />
                 <small className="small">{gif.description}</small><br />
-                <small className="small"><a href={gif.url} target="_blank"> - VISIT GIF- </a></small><br />
+                <small className="small2"><a href={gif.url} target="_blank"> - VISIT GIF ORIGIN- </a></small><br />
                 <div className="update-destroy">
                     <EditGifModal gif={gif} editGif={props.editGif} />
-                    <button className="btn btn-info log m-2" onClick={props.deleteGif.bind(null, gif._id)}>Delete</button>
+                    <button className="btn btn-info log3 m-2" onClick={props.deleteGif.bind(null, gif._id)}>Delete</button>
                 </div>
             </div>
         )
