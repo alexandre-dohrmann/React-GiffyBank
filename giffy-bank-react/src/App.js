@@ -5,8 +5,6 @@ import GifsContainer from './components/GifsContainer';
 import Nav from './components/Nav';
 import Login from './components/Login';
 import { Route, Switch } from 'react-router-dom';
-import MyGifs from './components/MyGifs';
-
 
 const My404 = () => {
   return (

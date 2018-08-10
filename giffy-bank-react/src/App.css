@@ -83,6 +83,27 @@
   font-family: 'Saira Extra Condensed', sans-serif;
   font-size: 20px;
 }
+.modal-header {
+  font-family: 'Squada One', cursive;
+  color: rgba(255, 0, 43, 0.767); 
+  font-size: 40px !important;
+}
+
+.gif-edit-input {
+  width: 200px;
+  margin: 2px;
+  display: inline-block;
+  text-align: left;
+  font-family: 'Saira Extra Condensed', sans-serif;
+  font-size: 18px;
+}
+.edit-description {
+  font-family: 'Saira Extra Condensed', sans-serif;
+  font-size: 20px;
+}
+.edit-modal-div {
+  display: inline-block;
+}
 
 label {
   font-family: 'Squada One', cursive;
@@ -110,12 +131,20 @@ label {
 .log {
   background-color: rgb(30, 40, 49); 
   font-family: 'Squada One', cursive;
+  display: inline-block;
 }
+
 .log2 {
   background-color: rgba(255, 0, 43, 0.767); 
   font-family: 'Squada One', cursive;
   font-size: 20px;
   margin-bottom: 20px;
+}
+
+.log3 {
+  background-color: rgba(255, 0, 43, 0.767); 
+  font-family: 'Squada One', cursive;
+  display: inline-block;
 }
 
 .nav-links {
@@ -192,6 +221,24 @@ p {
   display: inline-block;
   margin: 15px;
 }
+.small {
+  text-align: center;
+  text-transform: capitalize;
+  font-family: 'Saira Extra Condensed', sans-serif;
+  color: rgba(255, 0, 43, 0.767); 
+  font-size: 18px;
+}
+.my-gifs {
+  font-family: 'Kirang Haerang', cursive;
+  color: black; 
+  font-size: 30px;
+  text-align: center;
+  font-weight: 800;
+}
+.update-destroy {
+  text-align: center;
+}
+
 input {
     display: block;
     font-size: 22px;
